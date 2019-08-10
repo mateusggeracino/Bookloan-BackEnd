@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{D8226A15-8660-492C-A28F-FDBB91E8C7AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{92AB470E-EDE4-44CD-A18D-3B3A9822F95C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Business", "3 - Business", "{00D93728-57ED-42CF-A38B-EF60A7D84B10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{23AE9F00-B175-4269-B745-FAB2A618CF0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Repository", "5 - Repository", "{75616DDC-EDBE-4A32-B62E-EFCE6D312033}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Infra", "6 - Infra", "{D4891FFC-7BE8-4A67-8E71-E111747F9A13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Domain", "src\MGG.Bookloan.Domain\MGG.Bookloan.Domain.csproj", "{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Infra", "src\MGG.Bookloan.Infra\MGG.Bookloan.Infra.csproj", "{65C0DC13-14BD-49A8-BF12-212AC1951F99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C0DC13-14BD-49A8-BF12-212AC1951F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C0DC13-14BD-49A8-BF12-212AC1951F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C0DC13-14BD-49A8-BF12-212AC1951F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C0DC13-14BD-49A8-BF12-212AC1951F99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF} = {23AE9F00-B175-4269-B745-FAB2A618CF0B}
+		{65C0DC13-14BD-49A8-BF12-212AC1951F99} = {D4891FFC-7BE8-4A67-8E71-E111747F9A13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEAE44D5-C1B0-42DE-A2EC-F6A41F98F23C}
+	EndGlobalSection
+EndGlobal

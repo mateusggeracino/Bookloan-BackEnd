@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Mapper\" />
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MGG.Bookloan.Business\MGG.Bookloan.Business.csproj" />
+    <ProjectReference Include="..\MGG.Bookloan.Domain\MGG.Bookloan.Domain.csproj" />
   </ItemGroup>
 
 </Project>

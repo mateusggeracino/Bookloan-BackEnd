@@ -8,7 +8,7 @@ namespace MGG.Bookloan.WebAPI.Extensions
 {
     public static class SwaggerConfig
     {
-        public static void SwaggerAddServices(this IServiceCollection services)
+        public static void AddSwaggerServices(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {
@@ -20,7 +20,7 @@ namespace MGG.Bookloan.WebAPI.Extensions
                         Description = "Book Loan API",
                         Contact = new Contact
                         {
-                            Name = "MAteus G. Geracino",
+                            Name = "Mateus G. Geracino",
                             Url = "https://github.com/mateusggeracino/Bookloan-BackEnd"
                         }
                     });
@@ -36,7 +36,7 @@ namespace MGG.Bookloan.WebAPI.Extensions
             });
         }
 
-        public static void SwaggerAddApp(this IApplicationBuilder app)
+        public static void UseSwaggerApp(this IApplicationBuilder app)
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>

@@ -19,6 +19,7 @@ namespace MGG.Bookloan.WebAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerServices();
+            services.DependencyInjectionRegister();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

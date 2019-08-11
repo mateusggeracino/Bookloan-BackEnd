@@ -126,4 +126,10 @@
   <data name="ExceptionNotEmpty" xml:space="preserve">
     <value>O campo não pode ser vazio</value>
   </data>
+  <data name="Fail" xml:space="preserve">
+    <value>fail</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>success</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MGG.Bookloan.Domain.Entities.Base;
 
 namespace MGG.Bookloan.Repository.Interfaces.Base
@@ -9,6 +10,7 @@ namespace MGG.Bookloan.Repository.Interfaces.Base
         T Update(T obj);
         bool Remove(int id);
         T GetById(int id);
+        T GetByKey(Guid key);
         IEnumerable<T> GetAll();
     }
 }

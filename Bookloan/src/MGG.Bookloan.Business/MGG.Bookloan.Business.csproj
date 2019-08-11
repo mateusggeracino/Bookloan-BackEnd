@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MGG.Bookloan.Domain\MGG.Bookloan.Domain.csproj" />
+    <ProjectReference Include="..\MGG.Bookloan.Repository\MGG.Bookloan.Repository.csproj" />
   </ItemGroup>
 
 </Project>

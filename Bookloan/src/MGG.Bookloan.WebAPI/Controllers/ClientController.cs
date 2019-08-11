@@ -1,6 +1,12 @@
-﻿using MGG.Bookloan.WebAPI.Controllers.Base;
+﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using MGG.Bookloan.Infra;
+using MGG.Bookloan.Services.Interfaces;
+using MGG.Bookloan.Services.ViewModels.Request;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
@@ -8,36 +14,84 @@ namespace MGG.Bookloan.WebAPI.Controllers
     [ApiController]
     public class ClientController : BaseController
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly ILogger<ClientController> _logger;
+        private readonly IClientServices _clientServices;
+
+        public ClientController(ILogger<ClientController> logger, IClientServices clientServices)
         {
-            return new string[] { "value1", "value2" };
+            _logger = logger;
+            _clientServices = clientServices;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{key}")]
+        public ActionResult<string> Get([FromHeader] Guid key)
         {
-            return "value";
+            try
+            {
+                _logger.LogInformation("Get a client by key");
+                var client = _clientServices.GetByKey(key);
+                return Ok(client);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return new StatusCodeResult(500);
+            }
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<string> Post([FromBody] ClientRequestViewModel client)
         {
+            try
+            {
+                _logger.LogInformation("Add a new client");
+                if (!ModelState.IsValid) return BadRequest(client);
+
+                var result = _clientServices.Add(client);
+                if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
+
+                return Ok(Labels.Success);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return new StatusCodeResult(500);
+            }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{key}")]
+        public ActionResult<string> Put([FromHeader]Guid key, [FromBody] ClientRequestViewModel client)
         {
+            try
+            {
+                _logger.LogInformation("Update a Client");
+                var result = _clientServices.Update(key, client);
+                if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
+
+                return Ok(Labels.Success);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return new StatusCodeResult(500);
+            }
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{key}")]
+        public ActionResult<string> Delete([FromHeader] Guid key)
         {
+            try
+            {
+                _logger.LogInformation("Inactivate a client");
+                _clientServices.Inactivate(key);
+
+                return Ok(Labels.Success);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return new StatusCodeResult(500);
+            }
         }
     }
 }

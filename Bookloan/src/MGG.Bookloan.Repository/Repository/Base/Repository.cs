@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using Dapper.Contrib.Extensions;
 using MGG.Bookloan.Domain.Entities.Base;
-using MGG.Bookloan.Repository.Context;
-using MGG.Bookloan.Repository.Interfaces;
 using MGG.Bookloan.Repository.Interfaces.Base;
+using Microsoft.Extensions.Configuration;
 
 namespace MGG.Bookloan.Repository.Repository.Base
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
         protected IDbConnection Conn;
-        public Repository(ConnectionFactory factory)
+        public Repository(IConfiguration config)
         {
-            Conn = factory.Conn;
+            Conn = new SqlConnection(config.GetConnectionString("DefaultConnection"));
         }
 
         public T Add(T obj)
@@ -42,6 +43,11 @@ namespace MGG.Bookloan.Repository.Repository.Base
         public IEnumerable<T> GetAll()
         {
             return Conn.GetAll<T>();
+        }
+
+        public T GetByKey(Guid key)
+        {
+            return Conn.Get<T>(key);
         }
     }
 }

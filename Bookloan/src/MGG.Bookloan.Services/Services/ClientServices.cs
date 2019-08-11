@@ -1,8 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using MGG.Bookloan.Business.Interfaces;
 using MGG.Bookloan.Domain.Entities;
 using MGG.Bookloan.Services.Interfaces;
 using MGG.Bookloan.Services.ViewModels.Request;
+using MGG.Bookloan.Services.ViewModels.Response;
 
 namespace MGG.Bookloan.Services.Services
 {
@@ -17,12 +19,33 @@ namespace MGG.Bookloan.Services.Services
             _mapper = mapper;
         }
 
-        public ClientRequestViewModel Add(ClientRequestViewModel client)
+        public ClientResponseViewModel Add(ClientRequestViewModel client)
         {
             var clientEntity = _mapper.Map<Client>(client);
             var result = _clientBusiness.Add(clientEntity);
 
-            return _mapper.Map<ClientRequestViewModel>(result);
+            return _mapper.Map<ClientResponseViewModel>(result);
+        }
+
+        public ClientResponseViewModel GetByKey(Guid key)
+        {
+            var clientEntity = _clientBusiness.GetByKey(key);
+            return _mapper.Map<ClientResponseViewModel>(clientEntity);
+        }
+
+        public ClientResponseViewModel Update(Guid key, ClientRequestViewModel client)
+        {
+            var clientEntity = _mapper.Map<Client>(client);
+            clientEntity.UniqueKey = key;
+
+            var result = _clientBusiness.Update(clientEntity);
+            return _mapper.Map<ClientResponseViewModel>(result);
+        }
+
+        public bool Inactivate(Guid key)
+        {
+            var client = _clientBusiness.GetByKey(key);
+            return _clientBusiness.Inactivate(client);
         }
     }
 }

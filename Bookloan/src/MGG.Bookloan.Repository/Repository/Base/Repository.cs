@@ -44,10 +44,5 @@ namespace MGG.Bookloan.Repository.Repository.Base
         {
             return Conn.GetAll<T>();
         }
-
-        public T GetByKey(Guid key)
-        {
-            return Conn.Get<T>(key);
-        }
     }
 }

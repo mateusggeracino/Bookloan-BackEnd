@@ -35,8 +35,11 @@ namespace MGG.Bookloan.Services.Services
 
         public ClientResponseViewModel Update(Guid key, ClientRequestViewModel client)
         {
+            var clientConsult = _clientBusiness.GetByKey(key);
+
             var clientEntity = _mapper.Map<Client>(client);
             clientEntity.UniqueKey = key;
+            clientEntity.Id = clientConsult.Id;
 
             var result = _clientBusiness.Update(clientEntity);
             return _mapper.Map<ClientResponseViewModel>(result);
@@ -46,6 +49,11 @@ namespace MGG.Bookloan.Services.Services
         {
             var client = _clientBusiness.GetByKey(key);
             return _clientBusiness.Inactivate(client);
+        }
+
+        public ClientResponseViewModel GetBySocialNumber(string socialNumber)
+        {
+            return _mapper.Map<ClientResponseViewModel>(_clientBusiness.GetBySocialNumber(socialNumber));
         }
     }
 }

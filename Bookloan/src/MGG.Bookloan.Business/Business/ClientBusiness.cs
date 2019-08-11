@@ -43,6 +43,11 @@ namespace MGG.Bookloan.Business.Business
             return true;
         }
 
+        public Client GetBySocialNumber(string socialNumber)
+        {
+            return _clientRepository.GetBySocialNumber(socialNumber);
+        }
+
         private bool ClientValidator(Client client)
         {
             var clientValidator = new ClientValidator();

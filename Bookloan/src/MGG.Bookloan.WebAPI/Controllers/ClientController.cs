@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using MGG.Bookloan.Infra;
@@ -10,6 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
+    /// <summary>
+    /// Controller responsável por prover comportamentos de cliente
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ClientController : BaseController
@@ -17,19 +19,29 @@ namespace MGG.Bookloan.WebAPI.Controllers
         private readonly ILogger<ClientController> _logger;
         private readonly IClientServices _clientServices;
 
+        /// <summary>
+        /// Método construtor da controller cliente.
+        /// </summary>
+        /// <param name="logger">Gravador de logs</param>
+        /// <param name="clientServices">Contrato com comportamentos de cliente</param>
         public ClientController(ILogger<ClientController> logger, IClientServices clientServices)
         {
             _logger = logger;
             _clientServices = clientServices;
         }
 
-        [HttpGet("{key}")]
-        public ActionResult<string> Get([FromHeader] Guid key)
+        /// <summary>
+        /// Obter cliente através do número de cpf
+        /// </summary>
+        /// <param name="socialNumber">Cpf do Cliente</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult<string> Get([FromHeader] string socialNumber)
         {
             try
             {
-                _logger.LogInformation("Get a client by key");
-                var client = _clientServices.GetByKey(key);
+                _logger.LogInformation("Get a client by social number");
+                var client = _clientServices.GetBySocialNumber(socialNumber);
                 return Ok(client);
             }
             catch (Exception ex)
@@ -39,6 +51,11 @@ namespace MGG.Bookloan.WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastrar um novo cliente
+        /// </summary>
+        /// <param name="client">viewmodel do  cliente</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<string> Post([FromBody] ClientRequestViewModel client)
         {
@@ -59,7 +76,13 @@ namespace MGG.Bookloan.WebAPI.Controllers
             }
         }
 
-        [HttpPut("{key}")]
+        /// <summary>
+        /// Atualizar o cadastro de um cliente
+        /// </summary>
+        /// <param name="key">Chave do cliente</param>
+        /// <param name="client">Entidades com informações de cliente</param>
+        /// <returns></returns>
+        [HttpPut]
         public ActionResult<string> Put([FromHeader]Guid key, [FromBody] ClientRequestViewModel client)
         {
             try
@@ -77,7 +100,12 @@ namespace MGG.Bookloan.WebAPI.Controllers
             }
         }
 
-        [HttpDelete("{key}")]
+        /// <summary>
+        /// Inativar um cliente
+        /// </summary>
+        /// <param name="key">Chave do cliente</param>
+        /// <returns></returns>
+        [HttpDelete]
         public ActionResult<string> Delete([FromHeader] Guid key)
         {
             try

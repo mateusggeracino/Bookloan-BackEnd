@@ -10,7 +10,6 @@ namespace MGG.Bookloan.Repository.Interfaces.Base
         T Update(T obj);
         bool Remove(int id);
         T GetById(int id);
-        T GetByKey(Guid key);
         IEnumerable<T> GetAll();
     }
 }

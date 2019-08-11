@@ -10,5 +10,6 @@ namespace MGG.Bookloan.Services.Interfaces
         ClientResponseViewModel GetByKey(Guid key);
         ClientResponseViewModel Update(Guid key, ClientRequestViewModel client);
         bool Inactivate(Guid key);
+        ClientResponseViewModel GetBySocialNumber(string socialNumber);
     }
 }

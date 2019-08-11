@@ -6,5 +6,7 @@ namespace MGG.Bookloan.Repository.Interfaces
 {
     public interface IClientRepository : IRepository<Client>
     {
+        Client GetByKey(Guid key);
+        Client GetBySocialNumber(string socialNumber);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MGG.Bookloan.Domain.Entities.Base;
 
-namespace MGG.Bookloan.Repository.Interfaces
+namespace MGG.Bookloan.Repository.Interfaces.Base
 {
     public interface IRepository<T> where T : Entity
     {

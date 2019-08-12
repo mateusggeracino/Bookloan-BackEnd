@@ -30,7 +30,7 @@ namespace MGG.Bookloan.WebAPI.Extensions
                 var nomeAplicacao =
                     PlatformServices.Default.Application.ApplicationName;
                 var caminhoXmlDoc =
-                    Path.Combine(caminhoAplicacao, "MGG.Bookloan.WebAPI.xml");
+                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
 
                 c.IncludeXmlComments(caminhoXmlDoc);
             });

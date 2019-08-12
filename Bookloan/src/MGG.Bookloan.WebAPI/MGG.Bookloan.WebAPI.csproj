@@ -7,6 +7,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\repository\git\Bookloan-BackEnd\Bookloan\src\MGG.Bookloan.WebAPI\MGG.Bookloan.WebAPI.xml</DocumentationFile>
+    <OutputPath>bin\Debug\netcoreapp2.2\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Debug\netcoreapp2.2\</OutputPath>
+    <DocumentationFile>bin\Debug\netcoreapp2.2\MGG.Bookloan.WebAPI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

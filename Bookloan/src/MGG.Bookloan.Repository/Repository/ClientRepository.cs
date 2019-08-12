@@ -12,7 +12,7 @@ namespace MGG.Bookloan.Repository.Repository
         public ClientRepository(IConfiguration config) : base(config)
         {
         }
-
+         
         public Client GetByKey(Guid key)
         {
             var query = "SELECT * FROM Client WHERE UniqueKey = @key";

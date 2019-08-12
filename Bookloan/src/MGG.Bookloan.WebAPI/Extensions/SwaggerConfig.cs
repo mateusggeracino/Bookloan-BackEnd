@@ -25,14 +25,14 @@ namespace MGG.Bookloan.WebAPI.Extensions
                         }
                     });
 
-                var caminhoAplicacao =
+                var pathApp =
                     PlatformServices.Default.Application.ApplicationBasePath;
-                var nomeAplicacao =
+                var nameApp =
                     PlatformServices.Default.Application.ApplicationName;
-                var caminhoXmlDoc =
-                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+                var pathXmlDoc =
+                    Path.Combine(pathApp, $"{nameApp}.xml");
 
-                c.IncludeXmlComments(caminhoXmlDoc);
+                c.IncludeXmlComments(pathXmlDoc);
             });
         }
 

@@ -20,8 +20,7 @@ namespace MGG.Bookloan.Business.Business
         {
             if (ClientValidator(client)) return client;
 
-            var result = _clientRepository.Add(client);
-            return result;
+            return _clientRepository.Add(client);
         }
 
         public Client GetByKey(Guid key)

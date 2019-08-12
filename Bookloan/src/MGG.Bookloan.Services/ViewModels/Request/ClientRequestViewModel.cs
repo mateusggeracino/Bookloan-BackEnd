@@ -1,7 +1,4 @@
-﻿using FluentValidation.Results;
-using Newtonsoft.Json;
-
-namespace MGG.Bookloan.Services.ViewModels.Request
+﻿namespace MGG.Bookloan.Services.ViewModels.Request
 {
     public class ClientRequestViewModel
     {

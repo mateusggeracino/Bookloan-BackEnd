@@ -10,10 +10,12 @@ namespace MGG.Bookloan.Domain.Entities.Base
         protected Entity()
         {
             UniqueKey = Guid.NewGuid();
+            RegisterDate = DateTime.Now;
         }
 
         public int Id { get; set; }
         public Guid UniqueKey { get; set; }
+        public DateTime RegisterDate { get; set; }
 
         [Write(false)]
         public ValidationResult ValidationResult { get; set; }

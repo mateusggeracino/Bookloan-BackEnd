@@ -21,7 +21,7 @@ namespace MGG.Bookloan.Services.Services
         public LoanResponseViewModel Add(LoanRequestViewModel loan)
         {
             var loanEntity = _mapper.Map<Loan>(loan);
-            var result = _loanBusiness.Add(loanEntity);
+            var result = _loanBusiness.Add(loanEntity, loan.BookKey);
             return _mapper.Map<LoanResponseViewModel>(result);
         }
 

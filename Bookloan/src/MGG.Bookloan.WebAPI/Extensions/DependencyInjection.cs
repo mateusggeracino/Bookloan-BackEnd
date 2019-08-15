@@ -25,18 +25,21 @@ namespace MGG.Bookloan.WebAPI.Extensions
         {
             services.AddTransient<IClientServices, ClientServices>();
             services.AddTransient<IBookServices, BookServices>();
+            services.AddTransient<ILoanServices, LoanServices>();
         }
 
         private static void Business(IServiceCollection services)
         {
             services.AddTransient<IClientBusiness, ClientBusiness>();
             services.AddTransient<IBookBusiness, BookBusiness>();
+            services.AddTransient<ILoanBusiness, LoanBusiness>();
         }
 
         private static void Repository(IServiceCollection services)
         {
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<ILoanRepository, LoanRepository>();
         }
     }
 }

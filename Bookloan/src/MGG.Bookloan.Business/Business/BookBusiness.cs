@@ -41,7 +41,7 @@ namespace MGG.Bookloan.Business.Business
 
         public bool Inactivate(Book book)
         {
-            book.Active = false;
+            //book.Active = false;
             _bookRepository.Update(book);
             return true;
         }

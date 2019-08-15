@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using MGG.Bookloan.Domain.Entities;
 using MGG.Bookloan.Services.ViewModels.Request;
 using MGG.Bookloan.Services.ViewModels.Response;
@@ -11,9 +12,12 @@ namespace MGG.Bookloan.Services.Mapper.Profiles
         {
             CreateMap<ClientRequestViewModel, Client>();
             CreateMap<ClientResponseViewModel, Client>();
+            CreateMap<BookRequestViewModel, Book>();
             CreateMap<BookResponseViewModel, Book>();
-            CreateMap<BookResponseViewModel, Book>();
-            CreateMap<LoanResponseViewModel, Loan>();
+            CreateMap<LoanRequestViewModel, Loan>()
+                .ForMember(dest => dest.ClientKey, opt => opt.MapFrom(x => x.ClientKey))
+                .ForMember(dest => dest.Days, opt => opt.MapFrom(x => x.Days));
+
             CreateMap<LoanResponseViewModel, Loan>();
         }
     }

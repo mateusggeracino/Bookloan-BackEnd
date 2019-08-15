@@ -7,7 +7,8 @@ CREATE TABLE Client
 	SocialNumber varchar(15) not null,
 	Email varchar(120) not null,
 	Phone varchar(15),
-	Active bit
+	Active bit,
+	RegisterDate datetime
 );
 
 ALTER TABLE Client

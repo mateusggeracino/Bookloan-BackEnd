@@ -7,6 +7,10 @@ namespace MGG.Bookloan.Domain.Entities
     public class Client : Entity
     {
         public string Name { get; set; }
+        public string Lastname { get; set; }
+        public string SocialNumber { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
         public bool Active { get; set; }
     }
 }

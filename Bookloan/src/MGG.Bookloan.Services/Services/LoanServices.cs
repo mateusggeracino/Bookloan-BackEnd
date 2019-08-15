@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using MGG.Bookloan.Business.Interfaces;
 using MGG.Bookloan.Domain.Entities;
 using MGG.Bookloan.Services.Interfaces;
@@ -22,6 +23,12 @@ namespace MGG.Bookloan.Services.Services
             var loanEntity = _mapper.Map<Loan>(loan);
             var result = _loanBusiness.Add(loanEntity);
             return _mapper.Map<LoanResponseViewModel>(result);
+        }
+
+        public IEnumerable<LoanResponseViewModel> GetBySocialNumber(string socialNumber)
+        {
+            var result = _loanBusiness.GetBySocialNumber(socialNumber);
+            return _mapper.Map<IEnumerable<LoanResponseViewModel>>(result);
         }
     }
 }

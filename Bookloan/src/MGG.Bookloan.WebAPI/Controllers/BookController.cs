@@ -4,6 +4,7 @@ using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
 using MGG.Bookloan.Services.ViewModels.Request;
 using MGG.Bookloan.WebAPI.Controllers.Base;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,6 +13,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// <summary>
     /// Controller responsável por prover comportamentos de book
     /// </summary>
+    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BookController : BaseController

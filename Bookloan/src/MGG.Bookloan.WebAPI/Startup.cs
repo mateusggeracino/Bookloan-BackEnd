@@ -20,6 +20,7 @@ namespace MGG.Bookloan.WebAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerServices();
             services.DependencyInjectionRegister();
+            services.AddCors(x => { x.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -31,6 +32,7 @@ namespace MGG.Bookloan.WebAPI
 
             app.UseMvc();
             app.UseSwaggerApp();
+            app.UseCors(options => options.AllowAnyOrigin());
         }
     }
 }

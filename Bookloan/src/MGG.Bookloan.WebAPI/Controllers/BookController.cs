@@ -45,7 +45,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
                 var result = _bookServices.Add(book);
                 if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
 
-                return Ok("success");
+                return Json(Labels.Success);
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
                 _logger.LogInformation("Get all books");
                 var result = _bookServices.GetAll();
 
-                return Ok(result);
+                return Json(Ok(result));
             }
             catch (Exception ex)
             {

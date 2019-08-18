@@ -13,7 +13,6 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// <summary>
     /// Controller responsável por prover comportamentos de book
     /// </summary>
-    [EnableCors("AllowOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BookController : BaseController

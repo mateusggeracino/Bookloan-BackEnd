@@ -66,7 +66,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
                 _logger.LogInformation("Get all books");
                 var result = _bookServices.GetAll();
 
-                return Json(Ok(result));
+                return Ok(result);
             }
             catch (Exception ex)
             {

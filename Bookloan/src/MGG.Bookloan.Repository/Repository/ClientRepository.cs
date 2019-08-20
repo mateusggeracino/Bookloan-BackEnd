@@ -26,5 +26,13 @@ namespace MGG.Bookloan.Repository.Repository
 
             return Conn.QueryFirst<Client>(query, new { socialNumber });
         }
+
+        public Client Login(Client client)
+        {
+            var query = "SELECT * FROM Client WHERE SocialNumber = @socialNumber AND  Password = @password";
+
+            return Conn.QueryFirst<Client>(query,
+                new {@socialNumber = client.SocialNumber, @password = client.Password});
+        }
     }
 }

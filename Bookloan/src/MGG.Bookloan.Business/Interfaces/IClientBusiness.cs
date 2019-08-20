@@ -10,5 +10,6 @@ namespace MGG.Bookloan.Business.Interfaces
         Client Update(Client clientEntity);
         bool Inactivate(Client client);
         Client GetBySocialNumber(string socialNumber);
+        Client Login(Client client);
     }
 }

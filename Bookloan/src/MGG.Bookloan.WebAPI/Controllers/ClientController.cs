@@ -31,6 +31,31 @@ namespace MGG.Bookloan.WebAPI.Controllers
         }
 
         /// <summary>
+        /// Método que faz login no sistemas e obtém o token
+        /// </summary>
+        /// <param name="login">Propriedades necessárias para login - Cpf e Senha</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("auth")]
+        public ActionResult<string> Login([FromBody] LoginRequestViewModel login)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(login);
+
+                var result = _clientServices.Login(login);
+                if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.ToLogString(Environment.StackTrace));
+                return new StatusCodeResult(500);
+            }
+        }
+
+        /// <summary>
         /// Obter cliente através do número de cpf
         /// </summary>
         /// <param name="socialNumber">Cpf do Cliente</param>

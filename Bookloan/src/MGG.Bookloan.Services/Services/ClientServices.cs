@@ -55,5 +55,12 @@ namespace MGG.Bookloan.Services.Services
         {
             return _mapper.Map<ClientResponseViewModel>(_clientBusiness.GetBySocialNumber(socialNumber));
         }
+
+        public LoginResponseViewModel Login(LoginRequestViewModel login)
+        {
+            var result = _clientBusiness.Login(_mapper.Map<Client>(login));
+
+            return _mapper.Map<LoginResponseViewModel>(result);
+        }
     }
 }

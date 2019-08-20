@@ -8,5 +8,6 @@ namespace MGG.Bookloan.Repository.Interfaces
     {
         Client GetByKey(Guid key);
         Client GetBySocialNumber(string socialNumber);
+        Client Login(Client client);
     }
 }

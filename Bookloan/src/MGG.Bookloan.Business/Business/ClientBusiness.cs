@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using MGG.Bookloan.Business.Interfaces;
 using MGG.Bookloan.Domain.Entities;
 using MGG.Bookloan.Domain.Validations;
@@ -50,6 +52,11 @@ namespace MGG.Bookloan.Business.Business
         public Client Login(Client client)
         {
             return _clientRepository.Login(client);
+        }
+
+        public IEnumerable<Claim> GetClaims(int clientId)
+        {
+            return _clientRepository.GetClaims(clientId);
         }
 
         private bool ClientValidator(Client client)

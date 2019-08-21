@@ -4,7 +4,8 @@ CREATE TABLE Client
 	UniqueKey uniqueidentifier default newId() not null,
 	Name varchar(80) not null,
 	SocialNumber varchar(15) not null,
-	Active bit
+	Active bit,
+	Password varchar(50)
 );
 
 ALTER TABLE Client

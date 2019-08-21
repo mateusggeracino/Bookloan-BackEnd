@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 using MGG.Bookloan.Business.Interfaces;
 using MGG.Bookloan.Domain.Entities;
@@ -59,8 +60,12 @@ namespace MGG.Bookloan.Services.Services
         public LoginResponseViewModel Login(LoginRequestViewModel login)
         {
             var result = _clientBusiness.Login(_mapper.Map<Client>(login));
+            var loginViewModel = _mapper.Map<LoginResponseViewModel>(result);
 
-            return _mapper.Map<LoginResponseViewModel>(result);
+            if(result != null)
+                loginViewModel.Claims = _clientBusiness.GetClaims(result.Id).ToList();
+
+            return loginViewModel;
         }
     }
 }

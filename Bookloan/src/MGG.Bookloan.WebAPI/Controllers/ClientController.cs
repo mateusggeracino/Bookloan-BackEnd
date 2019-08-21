@@ -1,11 +1,19 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
+using MGG.Bookloan.Services.ViewModels.Jwt;
 using MGG.Bookloan.Services.ViewModels.Request;
+using MGG.Bookloan.Services.ViewModels.Response;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
@@ -18,41 +26,18 @@ namespace MGG.Bookloan.WebAPI.Controllers
     {
         private readonly ILogger<ClientController> _logger;
         private readonly IClientServices _clientServices;
+        private readonly JwtOptions _jwtOptions;
 
         /// <summary>
         /// Método construtor da controller cliente.
         /// </summary>
         /// <param name="logger">Gravador de logs</param>
         /// <param name="clientServices">Contrato com comportamentos de cliente</param>
-        public ClientController(ILogger<ClientController> logger, IClientServices clientServices)
+        public ClientController(ILogger<ClientController> logger, IClientServices clientServices, IOptions<JwtOptions> jwtOptions)
         {
             _logger = logger;
             _clientServices = clientServices;
-        }
-
-        /// <summary>
-        /// Método que faz login no sistemas e obtém o token
-        /// </summary>
-        /// <param name="login">Propriedades necessárias para login - Cpf e Senha</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("auth")]
-        public ActionResult<string> Login([FromBody] LoginRequestViewModel login)
-        {
-            try
-            {
-                if (!ModelState.IsValid) return BadRequest(login);
-
-                var result = _clientServices.Login(login);
-                if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.ToLogString(Environment.StackTrace));
-                return new StatusCodeResult(500);
-            }
+            _jwtOptions = jwtOptions.Value;
         }
 
         /// <summary>

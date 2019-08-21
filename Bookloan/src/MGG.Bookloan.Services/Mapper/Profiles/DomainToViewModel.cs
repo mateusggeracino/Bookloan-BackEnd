@@ -13,6 +13,7 @@ namespace MGG.Bookloan.Services.Mapper.Profiles
             CreateMap<Client, ClientResponseViewModel>();
             CreateMap<Book, BookResponseViewModel>();
             CreateMap<Book, BookRequestViewModel>();
+            CreateMap<Client, LoginResponseViewModel>();
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿using MGG.Bookloan.WebAPI.Extensions;
+﻿using System.Text;
+using MGG.Bookloan.Services.ViewModels.Jwt;
+using MGG.Bookloan.WebAPI.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MGG.Bookloan.WebAPI
 {
@@ -20,6 +24,8 @@ namespace MGG.Bookloan.WebAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerServices();
             services.DependencyInjectionRegister();
+            services.ConfigureJwt(Configuration);
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace MGG.Bookloan.Services.ViewModels.Response
 {
-    public class BookResponseViewModel
+    public sealed class BookResponseViewModel
     {
         public Guid UniqueKey { get; set; }
         public string Title { get; set; }

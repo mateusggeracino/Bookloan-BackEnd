@@ -14,7 +14,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class LoanController : BaseController
+    public sealed class LoanController : BaseController
     {
         private readonly ILoanServices _loanServices;
         private readonly ILogger<LoanController> _logger;

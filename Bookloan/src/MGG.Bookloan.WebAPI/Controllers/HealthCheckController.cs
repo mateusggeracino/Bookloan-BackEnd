@@ -13,7 +13,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class HealthCheckController : BaseController
+    public sealed class HealthCheckController : BaseController
     {
         private readonly ILogger<HealthCheckController> _logger;
 

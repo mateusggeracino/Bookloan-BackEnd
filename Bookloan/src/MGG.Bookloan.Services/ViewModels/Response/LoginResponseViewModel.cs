@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace MGG.Bookloan.Services.ViewModels.Response
 {
-    public class LoginResponseViewModel
+    public sealed class LoginResponseViewModel
     {
         public string SocialNumber { get; set; }
         public string Name { get; set; }

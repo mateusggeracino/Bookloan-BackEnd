@@ -12,5 +12,6 @@ namespace MGG.Bookloan.Repository.Interfaces
         Client GetBySocialNumber(string socialNumber);
         Client Login(Client client);
         IEnumerable<Claim> GetClaims(int clientId);
+        void AddClaims(int clientId, Claim claims);
     }
 }

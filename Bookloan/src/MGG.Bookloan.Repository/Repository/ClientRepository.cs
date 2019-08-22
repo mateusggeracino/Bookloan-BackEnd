@@ -43,5 +43,12 @@ namespace MGG.Bookloan.Repository.Repository
 
             return Conn.Query<Claim>(query, new { clientId });
         }
+
+        public void AddClaims(int clientId, Claim claims)
+        {
+            var query = "INSERT INTO ClientClaims(ClientId, ClaimType, ClaimValue) VALUES(@clientId, @claimType, @claimValue)";
+
+            Conn.Execute(query, new {clientId, @claimType = claims.Type, @claimValue = claims.Value});
+        }
     }
 }

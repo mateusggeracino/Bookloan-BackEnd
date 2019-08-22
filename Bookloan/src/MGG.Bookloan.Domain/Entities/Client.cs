@@ -4,7 +4,7 @@ using MGG.Bookloan.Domain.Entities.Base;
 namespace MGG.Bookloan.Domain.Entities
 {
     [Table("Client")]
-    public class Client : Entity
+    public sealed class Client : Entity
     {
         public string Name { get; set; }
         public string Lastname { get; set; }

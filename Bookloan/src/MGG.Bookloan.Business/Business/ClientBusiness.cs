@@ -22,7 +22,26 @@ namespace MGG.Bookloan.Business.Business
         {
             if (ClientValidator(client)) return client;
 
-            return _clientRepository.Add(client);
+            client.Active = true;
+            var result = _clientRepository.Add(client);
+
+            AddClaims(result);
+
+            return result;
+        }
+
+        private void AddClaims(Client client)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim("ClientKey",client.UniqueKey.ToString()),
+                new Claim("Client", "Update"),
+                new Claim("Client", "Delete"),
+                new Claim("Client", "Get"),
+            };
+
+            foreach(var claim in claims)
+                _clientRepository.AddClaims(client.Id, claim);
         }
 
         public Client GetByKey(Guid key)

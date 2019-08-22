@@ -1,6 +1,6 @@
 ﻿namespace MGG.Bookloan.Services.ViewModels.Request
 {
-    public class BookRequestViewModel
+    public sealed class BookRequestViewModel
     {
         public string Title { get; set; }
         public string Author { get; set; }

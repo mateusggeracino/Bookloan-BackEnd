@@ -132,4 +132,7 @@
   <data name="Success" xml:space="preserve">
     <value>success</value>
   </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Client not found</value>
+  </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿namespace MGG.Bookloan.Services.ViewModels.Jwt
 {
-    public class JwtOptions
+    public sealed class JwtOptions
     {
         public string Secret { get; set; }
         public int ExpirationInHours { get; set; }

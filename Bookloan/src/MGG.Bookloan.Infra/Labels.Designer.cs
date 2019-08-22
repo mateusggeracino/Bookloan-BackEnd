@@ -104,5 +104,14 @@ namespace MGG.Bookloan.Infra {
                 return ResourceManager.GetString("Success", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client not found.
+        /// </summary>
+        public static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
     }
 }

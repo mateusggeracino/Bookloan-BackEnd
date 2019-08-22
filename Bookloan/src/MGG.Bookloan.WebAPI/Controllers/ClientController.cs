@@ -3,12 +3,10 @@ using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
-using MGG.Bookloan.Services.ViewModels.Jwt;
 using MGG.Bookloan.Services.ViewModels.Request;
 using MGG.Bookloan.WebAPI.Authorize;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
@@ -17,38 +15,34 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientController : BaseController
+    public sealed class ClientController : BaseController
     {
         private readonly ILogger<ClientController> _logger;
         private readonly IClientServices _clientServices;
-        private readonly JwtOptions _jwtOptions;
 
         /// <summary>
         /// Método construtor da controller cliente.
         /// </summary>
         /// <param name="logger">Gravador de logs</param>
         /// <param name="clientServices">Contrato com comportamentos de cliente</param>
-        /// <param name="jwtOptions">Obtém informações de JWT do appsettings</param>
-        public ClientController(ILogger<ClientController> logger, IClientServices clientServices, IOptions<JwtOptions> jwtOptions)
+        public ClientController(ILogger<ClientController> logger, IClientServices clientServices)
         {
             _logger = logger;
             _clientServices = clientServices;
-            _jwtOptions = jwtOptions.Value;
         }
 
         /// <summary>
-        /// Obter cliente através do número de cpf
+        /// Obtem informações do cliente através do token de acesso
         /// </summary>
-        /// <param name="socialNumber">Cpf do Cliente</param>
         /// <returns></returns>
         [HttpGet]
         [ClaimsAuthorize("Client", "Get")]
-        public ActionResult<string> Get([FromHeader] string socialNumber)
+        public ActionResult<string> Get()
         {
             try
             {
                 _logger.LogInformation("Get a client by social number");
-                var client = _clientServices.GetBySocialNumber(socialNumber);
+                var client = _clientServices.GetByKey(ClientKey);
                 return Ok(client);
             }
             catch (Exception ex)
@@ -91,12 +85,13 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <returns></returns>
         [HttpPut]
         [ClaimsAuthorize("Client", "Update")]
-        public ActionResult<string> Put([FromHeader]Guid key, [FromBody] ClientRequestViewModel client)
+        public ActionResult<string> Put([FromBody] ClientRequestViewModel client)
         {
             try
             {
                 _logger.LogInformation("Update a Client");
-                var result = _clientServices.Update(key, client);
+
+                var result = _clientServices.Update(ClientKey, client);
                 if (result.ValidationResult.Errors.Any()) return AddValidationErrors(result.ValidationResult.Errors);
 
                 return Ok(Labels.Success);
@@ -115,12 +110,12 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <returns></returns>
         [HttpDelete]
         [ClaimsAuthorize("Client", "Delete")]
-        public ActionResult<string> Delete([FromHeader] Guid key)
+        public ActionResult<string> Delete()
         {
             try
             {
                 _logger.LogInformation("Inactivate a client");
-                _clientServices.Inactivate(key);
+                _clientServices.Inactivate(ClientKey);
 
                 return Ok(Labels.Success);
             }

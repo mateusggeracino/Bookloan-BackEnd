@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Dapper.Contrib.Extensions;
 using MGG.Bookloan.Domain.Entities.Base;
 
 namespace MGG.Bookloan.Domain.Entities
 {
     [Table("Loan")]
-    public class Loan : Entity
+    public sealed class Loan : Entity
     {
         public int Days { get; set; }
         public int ClientId { get; set; }

@@ -5,8 +5,6 @@ using MGG.Bookloan.Services.Interfaces;
 using MGG.Bookloan.Services.ViewModels.Request;
 using MGG.Bookloan.WebAPI.Authorize;
 using MGG.Bookloan.WebAPI.Controllers.Base;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,7 +15,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class BookController : BaseController
+    public sealed class BookController : BaseController
     {
         private readonly IBookServices _bookServices;
         private readonly ILogger<BookController> _logger;

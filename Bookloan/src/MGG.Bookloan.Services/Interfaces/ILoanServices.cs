@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MGG.Bookloan.Services.ViewModels.Request;
 using MGG.Bookloan.Services.ViewModels.Response;
 
@@ -8,5 +9,6 @@ namespace MGG.Bookloan.Services.Interfaces
     {
         LoanResponseViewModel Add(LoanRequestViewModel loan);
         IEnumerable<LoanResponseViewModel> GetBySocialNumber(string socialNumber);
+        IEnumerable<LoanResponseViewModel> GetByClientKey(Guid isAny);
     }
 }

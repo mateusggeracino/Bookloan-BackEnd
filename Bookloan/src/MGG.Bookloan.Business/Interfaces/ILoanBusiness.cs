@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MGG.Bookloan.Domain.Entities;
+using System;
 using System.Collections.Generic;
-using MGG.Bookloan.Domain.Entities;
 
 namespace MGG.Bookloan.Business.Interfaces
 {
@@ -8,5 +8,6 @@ namespace MGG.Bookloan.Business.Interfaces
     {
         Loan Add(Loan loan, IEnumerable<Guid> books);
         IEnumerable<Loan> GetBySocialNumber(string socialNumber);
+        IEnumerable<Loan> GetByClientKey(Guid clientKey);
     }
 }

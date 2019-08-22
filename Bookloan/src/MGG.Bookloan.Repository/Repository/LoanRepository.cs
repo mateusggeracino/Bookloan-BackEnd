@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dapper;
 using MGG.Bookloan.Domain.Entities;
 using MGG.Bookloan.Repository.Interfaces;
@@ -21,6 +22,16 @@ namespace MGG.Bookloan.Repository.Repository
                         " WHERE Client.SocialNumber = @socialNumber";
 
             return Conn.Query<Loan>(query, new {socialNumber});
+        }
+
+        public IEnumerable<Loan> GetByClientKey(Guid clientKey)
+        {
+            var query =
+                "SELECT * FROM Loan lo " +
+                " INNER JOIN Client cl on cl.Id = lo.ClientId " +
+                " WHERE cl.UniqueKey = @key";
+
+            return Conn.Query<Loan>(query, new { @key = clientKey });
         }
     }
 }

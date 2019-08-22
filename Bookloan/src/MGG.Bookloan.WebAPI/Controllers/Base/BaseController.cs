@@ -13,7 +13,7 @@ namespace MGG.Bookloan.WebAPI.Controllers.Base
         /// <summary>
         /// Propriedades que é preenchida com o token do sistema
         /// </summary>
-        protected Guid ClientKey => Guid.Parse(User.FindFirst("ClientKey").Value);
+        protected Guid ClientKey => User  == null ? Guid.Empty : Guid.Parse(User.FindFirst("ClientKey").Value);
 
         /// <summary>
         /// Adiciona erros do validationfailure (fluentvalidator) em um array de string e retorna como badrequest

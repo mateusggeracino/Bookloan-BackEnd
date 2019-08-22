@@ -48,5 +48,10 @@ namespace MGG.Bookloan.Business.Business
         {
             return _loanRepository.GetBySocialNumber(socialNumber);
         }
+
+        public IEnumerable<Loan> GetByClientKey(Guid clientKey)
+        {
+            return _loanRepository.GetByClientKey(clientKey);
+        }
     }
 }

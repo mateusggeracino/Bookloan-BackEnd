@@ -33,15 +33,14 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <summary>
         /// Obter informações do empréstimo, através do número do cpf.
         /// </summary>
-        /// <param name="socialNumber"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<string> Get([FromHeader] string socialNumber)
+        public ActionResult<string> Get()
         {
             try
             {
                 _logger.LogInformation("Get loan information by social number");
-                var result = _loanServices.GetBySocialNumber(socialNumber);
+                var result = _loanServices.GetByClientKey(ClientKey);
                 return Ok(result);
             }
             catch (Exception ex)

@@ -25,6 +25,7 @@ namespace MGG.Bookloan.WebAPI
             services.AddSwaggerServices();
             services.DependencyInjectionRegister();
             services.AddCors();
+            services.ConfigureJwt(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -1,19 +1,14 @@
 ﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
 using MGG.Bookloan.Services.ViewModels.Jwt;
 using MGG.Bookloan.Services.ViewModels.Request;
-using MGG.Bookloan.Services.ViewModels.Response;
+using MGG.Bookloan.WebAPI.Authorize;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
@@ -33,6 +28,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// </summary>
         /// <param name="logger">Gravador de logs</param>
         /// <param name="clientServices">Contrato com comportamentos de cliente</param>
+        /// <param name="jwtOptions">Obtém informações de JWT do appsettings</param>
         public ClientController(ILogger<ClientController> logger, IClientServices clientServices, IOptions<JwtOptions> jwtOptions)
         {
             _logger = logger;
@@ -46,6 +42,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="socialNumber">Cpf do Cliente</param>
         /// <returns></returns>
         [HttpGet]
+        [ClaimsAuthorize("Client", "Get")]
         public ActionResult<string> Get([FromHeader] string socialNumber)
         {
             try
@@ -93,6 +90,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="client">Entidades com informações de cliente</param>
         /// <returns></returns>
         [HttpPut]
+        [ClaimsAuthorize("Client", "Update")]
         public ActionResult<string> Put([FromHeader]Guid key, [FromBody] ClientRequestViewModel client)
         {
             try
@@ -116,6 +114,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="key">Chave do cliente</param>
         /// <returns></returns>
         [HttpDelete]
+        [ClaimsAuthorize("Client", "Delete")]
         public ActionResult<string> Delete([FromHeader] Guid key)
         {
             try

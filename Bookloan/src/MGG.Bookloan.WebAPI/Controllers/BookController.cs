@@ -62,7 +62,6 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// </summary>
         /// <returns>Retorna todos os livros cadastrados</returns>
         [HttpGet]
-        [Authorize]
         public ActionResult<string> Get()
         {
             try
@@ -86,6 +85,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="book">Propriedades para serem atualizadas</param>
         /// <returns></returns>
         [HttpPut]
+        [ClaimsAuthorize("Book", "Update")]
         public ActionResult<string> Put([FromHeader] Guid key, [FromBody] BookRequestViewModel book)
         {
             try
@@ -109,6 +109,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="key">Chave do livro</param>
         /// <returns></returns>
         [HttpDelete]
+        [ClaimsAuthorize("Book", "Delete")]
         public ActionResult<string> Delete([FromHeader] Guid key)
         {
             try

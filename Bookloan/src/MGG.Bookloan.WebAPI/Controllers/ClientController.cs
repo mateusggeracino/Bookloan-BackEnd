@@ -1,11 +1,19 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using MGG.Bookloan.WebAPI.Controllers.Base;
 using Microsoft.AspNetCore.Mvc;
 using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
+using MGG.Bookloan.Services.ViewModels.Jwt;
 using MGG.Bookloan.Services.ViewModels.Request;
+using MGG.Bookloan.Services.ViewModels.Response;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MGG.Bookloan.WebAPI.Controllers
 {
@@ -18,16 +26,18 @@ namespace MGG.Bookloan.WebAPI.Controllers
     {
         private readonly ILogger<ClientController> _logger;
         private readonly IClientServices _clientServices;
+        private readonly JwtOptions _jwtOptions;
 
         /// <summary>
         /// Método construtor da controller cliente.
         /// </summary>
         /// <param name="logger">Gravador de logs</param>
         /// <param name="clientServices">Contrato com comportamentos de cliente</param>
-        public ClientController(ILogger<ClientController> logger, IClientServices clientServices)
+        public ClientController(ILogger<ClientController> logger, IClientServices clientServices, IOptions<JwtOptions> jwtOptions)
         {
             _logger = logger;
             _clientServices = clientServices;
+            _jwtOptions = jwtOptions.Value;
         }
 
         /// <summary>

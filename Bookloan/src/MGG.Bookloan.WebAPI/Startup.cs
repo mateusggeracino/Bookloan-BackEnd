@@ -1,9 +1,13 @@
-﻿using MGG.Bookloan.WebAPI.Extensions;
+﻿using System.Text;
+using MGG.Bookloan.Services.ViewModels.Jwt;
+using MGG.Bookloan.WebAPI.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MGG.Bookloan.WebAPI
 {
@@ -29,17 +33,10 @@ namespace MGG.Bookloan.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseCors(options =>
-                {
-                    options.AllowAnyHeader();
-                    options.AllowAnyMethod();
-                    options.AllowAnyOrigin();
-                });
-
+            app.UseAuthentication();
             app.UseMvc();
             app.UseSwaggerApp();
-
+            app.UseCors(options => options.AllowAnyOrigin());
         }
     }
 }

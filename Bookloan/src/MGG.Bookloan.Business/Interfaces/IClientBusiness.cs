@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using MGG.Bookloan.Domain.Entities;
 
 namespace MGG.Bookloan.Business.Interfaces
@@ -10,5 +12,7 @@ namespace MGG.Bookloan.Business.Interfaces
         Client Update(Client clientEntity);
         bool Inactivate(Client client);
         Client GetBySocialNumber(string socialNumber);
+        Client Login(Client client);
+        IEnumerable<Claim> GetClaims(int resultId);
     }
 }

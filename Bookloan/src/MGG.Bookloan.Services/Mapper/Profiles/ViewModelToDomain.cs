@@ -14,6 +14,7 @@ namespace MGG.Bookloan.Services.Mapper.Profiles
             CreateMap<ClientResponseViewModel, Client>();
             CreateMap<BookRequestViewModel, Book>();
             CreateMap<BookResponseViewModel, Book>();
+            CreateMap<LoginRequestViewModel, Client>();
             CreateMap<LoanRequestViewModel, Loan>()
                 .ForMember(dest => dest.ClientKey, opt => opt.MapFrom(x => x.ClientKey))
                 .ForMember(dest => dest.Days, opt => opt.MapFrom(x => x.Days));

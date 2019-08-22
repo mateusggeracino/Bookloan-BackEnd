@@ -3,7 +3,9 @@ using System.Linq;
 using MGG.Bookloan.Infra;
 using MGG.Bookloan.Services.Interfaces;
 using MGG.Bookloan.Services.ViewModels.Request;
+using MGG.Bookloan.WebAPI.Authorize;
 using MGG.Bookloan.WebAPI.Controllers.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -36,6 +38,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// <param name="book">Propriedades de livro</param>
         /// <returns></returns>
         [HttpPost]
+        [ClaimsAuthorize("Book","Register")]
         public ActionResult<string> Post([FromBody]BookRequestViewModel book)
         {
             try
@@ -58,6 +61,7 @@ namespace MGG.Bookloan.WebAPI.Controllers
         /// </summary>
         /// <returns>Retorna todos os livros cadastrados</returns>
         [HttpGet]
+        [Authorize]
         public ActionResult<string> Get()
         {
             try

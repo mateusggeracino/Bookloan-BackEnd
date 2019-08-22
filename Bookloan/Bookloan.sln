@@ -15,17 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Repository", "5 - Repos
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Infra", "6 - Infra", "{D4891FFC-7BE8-4A67-8E71-E111747F9A13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Domain", "src\MGG.Bookloan.Domain\MGG.Bookloan.Domain.csproj", "{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.Domain", "src\MGG.Bookloan.Domain\MGG.Bookloan.Domain.csproj", "{EE5EBD23-0B07-43F6-852F-3D08D3BBEFCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Infra", "src\MGG.Bookloan.Infra\MGG.Bookloan.Infra.csproj", "{65C0DC13-14BD-49A8-BF12-212AC1951F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.Infra", "src\MGG.Bookloan.Infra\MGG.Bookloan.Infra.csproj", "{65C0DC13-14BD-49A8-BF12-212AC1951F99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Repository", "src\MGG.Bookloan.Repository\MGG.Bookloan.Repository.csproj", "{5FCAA809-669E-4E9C-89B6-E603E83FCCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.Repository", "src\MGG.Bookloan.Repository\MGG.Bookloan.Repository.csproj", "{5FCAA809-669E-4E9C-89B6-E603E83FCCBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Business", "src\MGG.Bookloan.Business\MGG.Bookloan.Business.csproj", "{ED7B098A-A6E2-4EC8-9687-19996DDB958B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.Business", "src\MGG.Bookloan.Business\MGG.Bookloan.Business.csproj", "{ED7B098A-A6E2-4EC8-9687-19996DDB958B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Services", "src\MGG.Bookloan.Services\MGG.Bookloan.Services.csproj", "{02F3DC47-2CDE-4B5A-845D-19D328DFEF0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.Services", "src\MGG.Bookloan.Services\MGG.Bookloan.Services.csproj", "{02F3DC47-2CDE-4B5A-845D-19D328DFEF0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.WebAPI", "src\MGG.Bookloan.WebAPI\MGG.Bookloan.WebAPI.csproj", "{7473C3C9-DB59-437F-8EBE-E4DEF044528A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MGG.Bookloan.WebAPI", "src\MGG.Bookloan.WebAPI\MGG.Bookloan.WebAPI.csproj", "{7473C3C9-DB59-437F-8EBE-E4DEF044528A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Tests", "7 - Tests", "{C3D5119B-CF5C-4E6E-92C7-0CDC0D2099F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGG.Bookloan.Tests", "tests\MGG.Bookloan.Tests\MGG.Bookloan.Tests.csproj", "{43AC6776-F607-4537-A5CC-556DCB460634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{7473C3C9-DB59-437F-8EBE-E4DEF044528A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7473C3C9-DB59-437F-8EBE-E4DEF044528A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7473C3C9-DB59-437F-8EBE-E4DEF044528A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43AC6776-F607-4537-A5CC-556DCB460634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43AC6776-F607-4537-A5CC-556DCB460634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43AC6776-F607-4537-A5CC-556DCB460634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43AC6776-F607-4537-A5CC-556DCB460634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{ED7B098A-A6E2-4EC8-9687-19996DDB958B} = {00D93728-57ED-42CF-A38B-EF60A7D84B10}
 		{02F3DC47-2CDE-4B5A-845D-19D328DFEF0E} = {92AB470E-EDE4-44CD-A18D-3B3A9822F95C}
 		{7473C3C9-DB59-437F-8EBE-E4DEF044528A} = {D8226A15-8660-492C-A28F-FDBB91E8C7AB}
+		{43AC6776-F607-4537-A5CC-556DCB460634} = {C3D5119B-CF5C-4E6E-92C7-0CDC0D2099F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEAE44D5-C1B0-42DE-A2EC-F6A41F98F23C}

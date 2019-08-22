@@ -24,8 +24,8 @@ namespace MGG.Bookloan.WebAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerServices();
             services.DependencyInjectionRegister();
-            services.AddCors();
             services.ConfigureJwt(Configuration);
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -34,10 +34,17 @@ namespace MGG.Bookloan.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowAnyOrigin();
+            });
+
             app.UseAuthentication();
             app.UseMvc();
             app.UseSwaggerApp();
-            app.UseCors(options => options.AllowAnyOrigin());
         }
     }
 }

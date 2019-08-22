@@ -35,14 +35,13 @@ namespace MGG.Bookloan.WebAPI.Extensions
                     Path.Combine(pathApp, $"{nameApp}.xml");
 
                 c.IncludeXmlComments(pathXmlDoc);
-                c.AddSecurityDefinition("Bearer",
-                    new ApiKeyScheme
-                    {
-                        In = "header",
-                        Description = "Please enter into field the word 'Bearer' following by space and JWT",
-                        Name = "Authorization",
-                        Type = "apiKey"
-                    });
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    In = "header",
+                    Description = "Por favor, digite a palavra 'Bearer' seguida de um espaço e o seu token",
+                    Name = "Authorization",
+                    Type = "apiKey"
+                });
                 c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> {
                     { "Bearer", Enumerable.Empty<string>() },
                 });

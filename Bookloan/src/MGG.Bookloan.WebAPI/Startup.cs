@@ -34,9 +34,9 @@ namespace MGG.Bookloan.WebAPI
             //{
                 app.UseDeveloperExceptionPage();
             //}
-
-            app.UseMvc();
             app.UseSwaggerApp();
+            app.UseAuthentication();
+            app.UseMvc();
         }
     }
 }

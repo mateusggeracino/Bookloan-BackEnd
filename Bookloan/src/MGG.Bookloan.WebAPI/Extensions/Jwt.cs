@@ -31,8 +31,8 @@ namespace MGG.Bookloan.WebAPI.Extensions
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = true,
-                    //ValidateAudience = true,
-                    //ValidAudience = jwtOptions.Valid,
+                    ValidateAudience = true,
+                    ValidAudience = jwtOptions.ValidIn,
                     ValidIssuer = jwtOptions.Issuer
                 };
             });

@@ -59,16 +59,15 @@ namespace MGG.Bookloan.WebAPI.Controllers
             var key = Encoding.ASCII.GetBytes(_jwtOptions.Secret);
 
             var identityClaims = new ClaimsIdentity();
-            login.Claims.ForEach(claim => identityClaims.AddClaim(claim));
+            identityClaims.AddClaims(login.Claims);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = identityClaims,
                 Issuer = _jwtOptions.Issuer,
-                //Audience = _jwtOptions.Valid,
-                Expires = DateTime.UtcNow.AddHours(_jwtOptions.ExpirationHours),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
+                Audience = _jwtOptions.ValidIn,
+                Expires = DateTime.UtcNow.AddHours(_jwtOptions.ExpirationInHours),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
             };
 
             login.Token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));

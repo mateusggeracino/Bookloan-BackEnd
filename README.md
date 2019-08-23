@@ -31,3 +31,12 @@ Assim, é necessário cadastrar um novo Cliente e após logar no sistema atravé
 * Unit Tests
 * Logger Errors
 * HealthCheck
+
+
+## Imagens Swagger ↓
+
+Apresentação das API's
+![alt text](https://i.ibb.co/1dP7VJP/swagger-1.png)
+
+Apresentação do modelo de autenticação para consumir as API's
+![alt text](https://i.ibb.co/nDY654T/swagger-2.png)

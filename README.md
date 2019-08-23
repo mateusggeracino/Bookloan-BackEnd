@@ -36,7 +36,7 @@ Assim, é necessário cadastrar um novo Cliente e após logar no sistema atravé
 ## Imagens Swagger ↓
 
 Apresentação das API's
-![alt text](https://i.ibb.co/1dP7VJP/swagger-1.png)
+![alt text](https://i.ibb.co/tCL6NKv/swagger-1.png)
 
 Apresentação do modelo de autenticação para consumir as API's
-![alt text](https://i.ibb.co/nDY654T/swagger-2.png)
+![alt text](https://i.ibb.co/10N6bz3/swagger-2.png)

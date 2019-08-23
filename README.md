@@ -18,7 +18,7 @@ https://github.com/mateusggeracino/Bookloan-BackEnd/tree/master/Bookloan/scripts
 Assim, é necessário cadastrar um novo Cliente e após logar no sistema através da api: Auth. Com isso teremos um token para a navegação no sistema.
 
 ## Funcionalidades ↓
-* Criar, Atualizar, Delete e Ler inforamções de Livros.
+* Criar, Atualizar, Delete e Ler informações de Livros.
 * Criar, Atualizar, Delete e Ler informações de Clientes.
 * Criar e Ler informações das reservas que estão ligados a Cliente e Livro
 

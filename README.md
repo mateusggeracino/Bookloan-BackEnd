@@ -10,7 +10,7 @@ Link: https://bookloan.azurewebsites.net/swagger/index.html
 [![Build status](https://ci.appveyor.com/api/projects/status/mo00pbulcadi5eva/branch/master?svg=true)](https://ci.appveyor.com/project/mateusggeracino/bookloan-backend/branch/master)
 
 
-## Para user
+## Para rodar
 Primeiro crie um banco de dados e altere a ConnectionStrings presente no appsettings.json.
 Após, execute no seu schema de banco de dados os scripts presente na pasta:
 https://github.com/mateusggeracino/Bookloan-BackEnd/tree/master/Bookloan/scripts
